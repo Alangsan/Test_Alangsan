@@ -30,7 +30,7 @@ def binance(coin):
 #call CoinGecko API
 def coingecko(coin):
     coin = coin.lower()
-    r = requests.get('https://api.coingecko.com/api/v3/coins').json()
+    r = requests.get("https://api.coingecko.com/api/v3/coins").json()
     for i in r:
         if i["symbol"] == coin:
             return i["market_data"]["current_price"]["usd"]
@@ -39,7 +39,7 @@ def coingecko(coin):
 #call CoinMarketCap API
 def coinmarketcap(coin):
     r = requests.get(url, params=params1, headers=headers).json()
-    all_coins = r['data']
+    all_coins = r["data"]
 
     for x in all_coins:
         if coin == x["symbol"]:
@@ -68,8 +68,6 @@ def okx(coin):
         for i in r["data"]["components"]:
             if i["symbol"] == f"{coin}/USD":
                 return i["symPx"]
-        else:
-            return "error"
     else:
         return "error"
 
